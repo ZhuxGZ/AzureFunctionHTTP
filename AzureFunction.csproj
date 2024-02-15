@@ -16,22 +16,20 @@
     <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="Models\" />
-    <None Remove="Services\" />
-    <None Remove="Services\GuardiansService\" />
+    <None Remove="Entities\" />
+    <None Remove="Strategies\" />
+    <None Remove="Interfaces\" />
+    <None Remove="Context\" />
   </ItemGroup>
   <ItemGroup>
-    <None Update="host.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="local.settings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
-    </None>
+    <Folder Include="Entities\" />
+    <Folder Include="Strategies\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Context\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Services\" />
-    <Folder Include="Services\GuardiansService\" />
+    <Reference Include="ampETLCommon">
+      <HintPath>..\..\..\Desktop\GM2\AMP\appdev\main\applications\azure\functions\ampETL\ampETLCommon\bin\Debug\net6.0\ampETLCommon.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

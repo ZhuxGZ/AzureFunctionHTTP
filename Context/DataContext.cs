@@ -1,12 +1,11 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Http_trigger.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using ampETLCommon.dtos;
 
-namespace Http_trigger.data
+namespace AzureFunction.Context
 {
     public class DataContext : DbContext
     {
-        public DataContext(DbContextOptions<DataContext> options) : base(options)
+        public DataContext() : base()
         {
 
         }
@@ -17,6 +16,6 @@ namespace Http_trigger.data
             optionsBuilder.UseSqlServer("Server=localhost;Database=azureApi;User=sa;Password=P@ssword1234;Trusted_Connection=False;Encrypt=false");
         }
 
-        public DbSet<GuardiansData> GuardiansData{ get; set; }
+        public DbSet<ArticleDTO> StageArticles{ get; set; }
     }
 }
