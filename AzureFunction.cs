@@ -7,22 +7,22 @@ namespace AzureFunction
 {
 	public class AzureFunction
 	{
-		private string _dateFrom;
-		private ILogger _log;
+		
+        private ILogger _log;
+        private string _dateFrom;
 
-		public AzureFunction(string dateFrom, ILogger log)
-		{
-            _dateFrom = dateFrom;
+        public AzureFunction(ILogger log, string dateFrom)
+        {
             _log = log;
-
+            _dateFrom = dateFrom;
         }
 
-		public async Task Run()
+        public async Task Run()
 		{
             
             Article article = new();
 
-            await article.AddArticles(_dateFrom, _log);
+            await article.AddArticles(_log, _dateFrom);
         }
     }
 }

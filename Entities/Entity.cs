@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using ampETL;
 using Newtonsoft.Json;
-
+using Microsoft.Extensions.Logging;
 
 namespace AzureFunction.Entities
 {
@@ -12,7 +13,7 @@ namespace AzureFunction.Entities
 		{
 		}
 
-		public static async Task<dynamic> GetData(string apiUrl)
+		public static async Task<dynamic> GetData(string apiUrl, ILogger log)
 		{
             using HttpClient client = new();
             try
@@ -32,7 +33,7 @@ namespace AzureFunction.Entities
             }
             catch (Exception ex)
             {
-                return null;
+                throw new BaseException(ex, "AzureFunction", "data", log, null);
             }
         }
 	}

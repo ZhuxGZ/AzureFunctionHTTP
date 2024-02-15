@@ -35,7 +35,7 @@ namespace AzureFunction.Entities
                         apiUrl = $"https://content.guardianapis.com/search?from-date={dateFrom}&page-size=200&page={actualPage}&api-key={apiKey}";
                     }
 
-                    dynamic response = await GetData(apiUrl);
+                    dynamic response = await GetData(apiUrl, log);
                     dynamic results = response?.response?.results;
 
                     if (dateFrom != null)
@@ -70,7 +70,7 @@ namespace AzureFunction.Entities
                 return null;
             } catch(Exception ex)
             {
-                throw new BaseException(ex, "AzureFunction", log);
+                throw new BaseException(ex, "AzureFunction", "articles", log, null);
             }
         }
     }
